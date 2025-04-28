@@ -4,10 +4,16 @@ import CategoryFilter from "./CategoryFilter";
 import NewTaskForm from "./NewTaskForm";
 import TaskList from "./TaskList";
 
-console.log("Here's the data you're working with");
-console.log({ CATEGORIES, TASKS });
+import { CATEGORIES } from "../data";  // Ensure this path is correct
+
+
+//console.log("Here's the data you're working with");
+//console.log({ CATEGORIES, TASKS });
 
 function App() {
+
+console.log("Here's the data you're working with");
+console.log({ CATEGORIES, TASKS });
   return (
     <div className="App">
       <h2>My tasks</h2>

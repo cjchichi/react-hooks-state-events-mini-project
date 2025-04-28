@@ -21,7 +21,9 @@ function Task({text,category,onDelete}) {
 
 export default Task;
 */
-tt
+
+
+
 function Task({ id, text, category, onDelete }) {
   return (
     <div className="task">
