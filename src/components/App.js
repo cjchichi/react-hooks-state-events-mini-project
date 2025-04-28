@@ -7,8 +7,8 @@ import TaskList from "./TaskList";
 import { CATEGORIES } from "../data";  // Ensure this path is correct
 
 
-//console.log("Here's the data you're working with");
-//console.log({ CATEGORIES, TASKS });
+console.log("Here's the data you're working with");
+console.log({ CATEGORIES, TASKS });
 
 function App() {
 
@@ -25,6 +25,8 @@ console.log({ CATEGORIES, TASKS });
 }
 
 export default App;
+
+
 
 /*
 import React, { useState } from 'react';
