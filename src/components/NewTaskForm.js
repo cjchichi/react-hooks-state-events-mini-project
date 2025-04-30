@@ -1,112 +1,53 @@
-/*
-import React from "react";
-
-function NewTaskForm() {
-  return (
-    <form className="new-task-form">
-      <label>
-        Details
-        <input type="text" name="text" />
-      </label>
-      <label>
-        Category
-        <select name="category">
-          {/* render <option> elements for each category here }
-        </select>
-      </label>
-      <input type="submit" value="Add task" />
-    </form>
-  );
-}
-
-export default NewTaskForm;
-*
 
 import React, { useState } from "react";
 
-const NewTaskForm = ({ categories, onTaskFormSubmit }) => {
-  const [text, setText] = useState("");
-  const [category, setCategory] = useState(categories[0]); // Default to the first category
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    onTaskFormSubmit({ text, category });
-    setText(""); // Clear the input after submission
-    setCategory(categories[0]); // Reset category to the first option
-  };
-
-  return (
-    <form className="new-task-form" onSubmit={handleSubmit}>
-      <label>
-        Details
-        <input
-          type="text"
-          name="text"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-        />
-      </label>
-      <label>
-        Category
-        <select
-          name="category"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        >
-          {categories.map((cat) => (
-            <option key={cat} value={cat}>
-              {cat}
-            </option>
-          ))}
-        </select>
-      </label>
-      <input type="submit" value="Add task" />
-    </form>
-  );
-};
-
-export default NewTaskForm;
-*/
-
-// NewTaskForm.js
-import React, { useState } from 'react';
-
 function NewTaskForm({ categories, onTaskFormSubmit }) {
-  const [text, setText] = useState("");
-  const [category, setCategory] = useState("Code");
+  const [text, setText] = useState(""); // St
+  const [category, setCategory] = useState(categories[1]); 
 
+  // Handle form submit
   const handleSubmit = (e) => {
-    e.preventDefault();
-    onTaskFormSubmit({ text, category });
+    e.preventDefault(); 
+
+    const newTask = { text, category };  
+
+    onTaskFormSubmit(newTask);  
+
+    // Reset form fields
     setText("");
+    setCategory(categories[1]);  
   };
 
+  
+  const filteredCategories = categories.filter((cat) => cat !== "All");
+
   return (
-    <form className="new-task-form" onSubmit={handleSubmit}>
-      <label>
-        Details
-        <input 
-          type="text" 
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-        />
-      </label>
-      
-      <label>
-        Category
-        <select
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        >
-          {categories.map(cat => (
-            <option key={cat} value={cat}>{cat}</option>
-          ))}
-        </select>
-      </label>
-      
+    <form onSubmit={handleSubmit} className="new-task-form">
+      <label htmlFor="task-details">New Task Details</label>
+      <input
+        id="task-details"  // Link the label with the input
+        type="text"
+        value={text}
+        onChange={(e) => setText(e.target.value)}  // Update state with the input value
+        placeholder="New task details"
+      />
+
+      <label htmlFor="task-category">Category</label>
+      <select
+        id="task-category"  // Link the label with the select
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}  // Update the selected category
+      >
+        {filteredCategories.map((cat) => (
+          <option key={cat} value={cat}>
+            {cat}
+          </option>
+        ))}
+      </select>
+
       <input type="submit" value="Add task" />
     </form>
   );
 }
 
-export default NewTaskForm;  // Make sure to export default
+export default NewTaskForm;

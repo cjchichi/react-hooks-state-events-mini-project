@@ -1,38 +1,18 @@
-/*
-import React from "react";
 
+import Task from "./Task";
 
-function TaskList({tasks}) {
-  return (
-    <div>
-      {tasks.map((task,index)=>
-     <div key={index} className="task">
-      {task.name} {}
-    </div>
-    )}
-    </div>
-  );
-}
-
-export default TaskList;
-*/
-
-import React from 'react';
-import Task from './Task';
-
-function TaskList({ tasks, onDelete }) {
+function TaskList({ tasks, onDeleteTask }) {
   return (
     <div className="tasks">
-      {tasks.map((task, index) => (
-        <Task 
-          key={task.id || index}  
-          id={task.id}
-          text={task.text} 
+      {tasks.map((task) => (
+        <Task
+          key={task.text}
+          text={task.text}
           category={task.category}
-          onDelete={onDelete}
+          onDeleteTask={onDeleteTask}
         />
       ))}
     </div>
   );
 }
-export default TaskList;
+export default TaskList
